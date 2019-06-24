@@ -8,6 +8,11 @@ local=require("passport-local"),
 passmongo=require("passport-local-mongoose"),
 mongoose=require("mongoose");
 
+
+
+
+
+
 app.set("view engine","ejs");
 app.use(parser.urlencoded({extended:true}));
 app.use(express.static("public"));
