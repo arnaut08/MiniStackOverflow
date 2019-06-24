@@ -32,8 +32,8 @@
 <%} else {%>
     <% ques.forEach((value)=>{ %>
         <div class="py-2 questions d-flex flex-column">
-        <h3 class="pl-2">Title:<%= value.title%></h3>
-        <h5 class="pl-2">Question:<%= value.content%></h5>
+        <h3 class="pl-2">Title: <%= value.title%></h3>
+        <h5 class="pl-2">Question: <%= value.content%></h5>
         <p class="px-2 align-self-end">Answers Given:<%= value.answers.length%></p>
         <a href="/home/questions/<%= value._id %>" class="btn btn-primary w-50 align-self-center pl-3">Answer This Question</a>
         </div>
