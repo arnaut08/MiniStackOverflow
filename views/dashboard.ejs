@@ -1,0 +1,44 @@
+<% include ./partials/header %>
+<nav class="navbar navbar-light bg-light navbar-expand">
+    <a class="navbar-brand" href="/home">StackOverFlowMini</a>
+    <div class="container justify-content-center pr-5">
+        <div class="menu pr-3">
+            <ul class="navbar-nav">
+                <li class="navbar-item">
+                    <a href="/home" class="nav-link">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/add" class="nav-link">Add Questions</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/answers" class="nav-link">My Answers</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/questions" class="nav-link">My Questions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-link"><a href="/logout" class="btn btn-warning">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container pt-5 d-flex flex-column">
+<h1 class="align-self-center jumbotron">Welcome to StackOverFlowMini</h1>
+<% if(ques.length==0){%>
+    <p>No Questions Uploaded Yet</p>
+<%} else {%>
+    <% ques.forEach((value)=>{ %>
+        <div class="py-2 questions d-flex flex-column">
+        <h3 class="pl-2">Title:<%= value.title%></h3>
+        <h5 class="pl-2">Question:<%= value.content%></h5>
+        <p class="px-2 align-self-end">Answers Given:<%= value.answers.length%></p>
+        <a href="/home/questions/<%= value._id %>" class="btn btn-primary w-50 align-self-center pl-3">Answer This Question</a>
+        </div>
+    <%})%>  
+<%}%>
+</div>
+<% include ./partials/footer %>
+

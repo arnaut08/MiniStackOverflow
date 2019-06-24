@@ -1,0 +1,46 @@
+body{
+    font-family: 'Bitter', serif;
+}
+
+.qbody, .abody{
+    border: 1px solid grey;
+}
+
+ul{
+    list-style-type: none;
+}
+
+#qtitle{
+    font-size: 30px;
+}
+
+#qcontent{
+    font-size: 25px;
+}
+
+li{
+    font-size: 18px;
+}
+
+.ansform, .queform{
+    border:1px dotted grey;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.questions{
+    border: 1px solid grey;
+    margin-top: 3px;
+}
+
+.by{
+    font-size: 15px;
+}
+
+.ans:hover{
+    background: lightblue;
+}
+
+.lsques{
+    font-size: 12px;
+}

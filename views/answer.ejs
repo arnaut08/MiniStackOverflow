@@ -1,0 +1,50 @@
+<% include ./partials/header %>
+<nav class="navbar navbar-light bg-light navbar-expand">
+    <a class="navbar-brand" href="/home">StackOverFlowMini</a>
+    <div class="container justify-content-center pr-5">
+        <div class="menu pr-2">
+            <ul class="navbar-nav">
+                <li class="navbar-item">
+                    <a href="/home" class="nav-link">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/add" class="nav-link">Add Questions</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/answers" class="nav-link">My Answers</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/questions" class="nav-link">My Questions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-link"><a href="/logout" class="btn btn-warning">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<section class="container pt-5">
+    <div class="qbody d-flex flex-column">
+        <h3 id="qtitle" class="px-2 align-self-center"><%= ques.title%></h3>
+        <p id="qcontent" class="px-4 pt-2">Question: <%= ques.content%></p>
+        <ul>
+            <% ques.answers.forEach((ans)=>{ %>
+                <div class="ans d-flex flex-column"><li class="pt-2"><strong>Answer:</strong> <%=ans.content%></li><p class="by align-self-end px-1"><strong>Answered by:</strong><%=ans.by%>  <strong>On:</strong><%=ans.datetime.toDateString()%></p></div>
+            <%})%>
+        </ul>
+    </div>
+    <div class="container w-50 pt-5 pb-2 ansform">
+    <p>POST YOUR ANSWER:<p>
+        <form action="/home/questions/<%= ques._id %>" method="POST">
+            <input type="hidden" class="form-control" name="form[by]" id="by" value="<%=user.username%>">
+            <div class="form-group">
+            <label for="answer">Answer:</label>
+            <textarea class="form-control" name="form[content]" id="answer" placeholder="Your Answer" rows=3></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>    
+    </div> 
+</section>
+<% include ./partials/footer %>

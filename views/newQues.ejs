@@ -1,0 +1,54 @@
+<% include ./partials/header %>
+<nav class="navbar navbar-light bg-light navbar-expand">
+    <a class="navbar-brand" href="/home">StackOverFlowMini</a>
+    <div class="container justify-content-center pr-5">
+        <div class="menu pr-2">
+            <ul class="navbar-nav">
+                <li class="navbar-item">
+                    <a href="/home" class="nav-link">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/add" class="nav-link">Add Questions</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/answers" class="nav-link">My Answers</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/home/questions" class="nav-link">My Questions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-link"><a href="/logout" class="btn btn-warning">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<section class="d-flex pl-2">
+    <aside class="mt-2 d-flex flex-column"> <h5 class="align-self-center">Last 5 Questions:</h5>
+            <% ques.reverse().slice(0,5).forEach((value)=>{ %>
+                    <div class="py-2 questions d-flex flex-column lsques">
+                        <p class="px-2"><%= value.title%></p>
+                        <p class="px-2"><%= value.content%></p>
+                        <a href="/home/questions/<%= value._id %>" class="btn btn-primary w-50 align-self-center pl-3">Answer</a>
+                    </div>
+            <%})%>  
+    </aside>
+    <div class="container pt-5 d-flex flex-column">
+        <h2 class="align-self-center">Add A Question</h2>
+    <form action="/home" method="POST">
+        <div class="form-group">
+        <input type="hidden" class="form-control" name="form[by]" id="by" value="<%=user%>">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" name="form[title]" id="title" placeholder="Question's Title">
+        </div>
+        <div class="form-group">
+        <label for="question">Question:</label>
+        <input type="text" class="form-control" name="form[content]" id="question" placeholder="Question">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</section>
+<% include ./partials/footer %>
